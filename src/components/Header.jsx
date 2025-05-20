@@ -10,7 +10,7 @@ const Header = () => {
 		<header className="bg-blue-50 shadow-md py-4 px-4 md:px-20 flex justify-between items-center relative">
 			<div className="flex items-center space-x-2">
 				<img
-					src=""
+					src="https://i.postimg.cc/gc3L1KM1/image.png"
 					alt="logo"
 					className="hidden md:block w-12 h-12 rounded-full"
 				/>
@@ -27,7 +27,7 @@ const Header = () => {
 					All Recipe
 				</Link>
 
-				<Link to="/addrecipe" className=" text-lime-400 py-2 px-5" >
+				<Link to="/addrecipe" className=" text-lime-400 py-2 px-5">
 					Add Recipe
 				</Link>
 
@@ -42,13 +42,13 @@ const Header = () => {
 			<div className="space-x-4 flex items-center">
 				<>
 					<Link
-						to="/login"
+						to="/signin"
 						className="px-2 py-2 text-lime-500 border border-lime-600 rounded hover:bg-lime-600 hover:text-white"
 					>
 						Login
 					</Link>
 					<Link
-						to="/register"
+						to="/signup"
 						className="px-2 py-2 text-lime-500 border border-lime-600 rounded hover:bg-lime-600 hover:text-white"
 					>
 						Register

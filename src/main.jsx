@@ -5,6 +5,9 @@ import App from './App.jsx'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import MainLayout from './layout/MainLayout.jsx'
 import Home from './pages/Home/Home.jsx'
+import SignIn from './pages/SignIn/SignIn.jsx'
+import SignUp from './pages/SignUp/SignUp.jsx'
+import AuthProvider from './context/AuthProvider.jsx'
 
 const router = createBrowserRouter([
 	{
@@ -18,7 +21,12 @@ const router = createBrowserRouter([
 		Component: Home,
 	},
   {
-    path: "/allrecipe",
+    path: "/signin",
+    Component: SignIn,
+  },
+  {
+    path: "/signup",
+    Component: SignUp,
   }
   ]
 }
@@ -27,6 +35,9 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <RouterProvider router={router}></RouterProvider>
+     <AuthProvider>
+       <RouterProvider router={router}></RouterProvider>
+     </AuthProvider>
+   
   </StrictMode>,
 )
