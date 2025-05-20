@@ -5,6 +5,7 @@ import { FaEyeSlash } from "react-icons/fa";
 import { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
+import { Bounce, toast } from "react-toastify";
 
 
 const SignUp = () => {
@@ -13,7 +14,7 @@ const SignUp = () => {
 	const [showpass, setshowpass] = useState(false);
 	const location = useLocation();
 	const navigate = useNavigate();
-	const { createUser } = use(AuthContext);
+	const { createUser, registerGoogle } = use(AuthContext);
 
 	const handleRegister = (e) => {
 		e.preventDefault();
@@ -96,27 +97,27 @@ const SignUp = () => {
 			});
 	};
 
-	// const handleGoogleLogin = () => {
-	// 	registerGoogle()
-	// 		.then((result) => {
-	// 			console.log(result);
-	// 			toast.success("Log in with google successful", {
-	// 				position: "top-right",
-	// 				autoClose: 5000,
-	// 				hideProgressBar: false,
-	// 				closeOnClick: false,
-	// 				pauseOnHover: true,
-	// 				draggable: true,
-	// 				progress: undefined,
-	// 				theme: "light",
-	// 				transition: Bounce,
-	// 			});
-	// 			navigate(`${location.state ? location.state : "/"}`);
-	// 		})
-	// 		.catch((error) => {
-	// 			console.log(error);
-	// 		});
-	// };
+	const handleGoogleLogin = () => {
+		registerGoogle()
+			.then((result) => {
+				console.log(result);
+				toast.success("Log in with google successful", {
+					position: "top-right",
+					autoClose: 5000,
+					hideProgressBar: false,
+					closeOnClick: false,
+					pauseOnHover: true,
+					draggable: true,
+					progress: undefined,
+					theme: "light",
+					transition: Bounce,
+				});
+				navigate(`${location.state ? location.state : "/"}`);
+			})
+			.catch((error) => {
+				console.log(error);
+			});
+	};
 
 	return (
 		<div className="flex flex-col items-center justify-center pt-15 ">
@@ -213,7 +214,7 @@ const SignUp = () => {
 					or
 				</p>
 				<button
-				
+					onClick={handleGoogleLogin}
 					className="btn bg-white text-black border-[#e5e5e5]"
 				>
 					<svg
