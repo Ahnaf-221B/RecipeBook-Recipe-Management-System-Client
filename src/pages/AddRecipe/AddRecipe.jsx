@@ -1,5 +1,6 @@
 import React, { use } from "react";
 import { AuthContext } from "../../context/AuthContext";
+import Swal from "sweetalert2";
 
 
 const AddRecipe = () => {
@@ -22,7 +23,14 @@ const { user } = use(AuthContext);
 									body: JSON.stringify(newRecipe),
 								})
 									.then((res) => res.json())
-									.then((data) => console.log('after adding recipe to db',data));
+									.then(data =>
+										Swal.fire({
+														position: "top-end",
+														icon: "success",
+														title: "Recipe Added Successfully",
+														showConfirmButton: false,
+														timer: 1500,
+													}))
                 
     
     }
