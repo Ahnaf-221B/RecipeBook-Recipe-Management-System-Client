@@ -258,4 +258,3 @@ const SignUp = () => {
 };
 
 export default SignUp;
-// import React from 'react'

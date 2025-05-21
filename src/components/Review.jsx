@@ -1,7 +1,7 @@
-"use client";
+
 
 import { useState } from "react";
-import { FiStar, FiThumbsUp, FiMessageSquare } from "react-icons/fi";
+
 
 function RecipeReviews() {
 	// Sample review data
@@ -54,64 +54,25 @@ function RecipeReviews() {
 
 	const [reviews, setReviews] = useState(initialReviews);
 
-	// Calculate average rating
-	const averageRating =
-		reviews.reduce((sum, review) => sum + review.rating, 0) / reviews.length;
-	const roundedAverage = Math.round(averageRating * 10) / 10; // Round to 1 decimal place
 
-	// Handle marking a review as helpful
-	const handleHelpfulClick = (id) => {
-		setReviews(
-			reviews.map((review) => {
-				if (review.id === id) {
-					return {
-						...review,
-						helpful: review.isHelpful ? review.helpful - 1 : review.helpful + 1,
-						isHelpful: !review.isHelpful,
-					};
-				}
-				return review;
-			})
-		);
-	};
+	
+	
 
-	// Render stars based on rating
-	const renderStars = (rating) => {
-		return Array(5)
-			.fill(0)
-			.map((_, i) => (
-				<FiStar
-					key={i}
-					className={`h-4 w-4 ${
-						i < rating ? "fill-amber-400 text-amber-400" : "text-gray-300"
-					}`}
-				/>
-			));
-	};
+
+
+	
 
 	return (
-		<section className="my-12">
-			<div className="mb-8 flex flex-col items-center justify-between gap-4 sm:flex-row">
+		<section className="my-12 ">
+			<div className="mb-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
 				<div>
 					<h2 className="text-2xl font-bold text-gray-900">Customer Reviews</h2>
-					<div className="mt-2 flex items-center">
-						<div className="mr-2 flex">
-							{renderStars(Math.round(averageRating))}
-						</div>
-						<span className="text-lg font-medium text-gray-900">
-							{roundedAverage}
-						</span>
-						<span className="ml-1 text-gray-500">
-							({reviews.length} reviews)
-						</span>
-					</div>
+					
 				</div>
-				<button className="rounded-md bg-amber-500 px-4 py-2 font-medium text-white transition-colors hover:bg-amber-600">
-					Write a Review
-				</button>
+				
 			</div>
 
-			<div className="space-y-6">
+			<div className="space-y-6 grid grid-cols-4  p-10 gap-20">
 				{reviews.map((review) => (
 					<div
 						key={review.id}
@@ -129,36 +90,17 @@ function RecipeReviews() {
 									<p className="text-sm text-gray-500">{review.date}</p>
 								</div>
 							</div>
-							<div className="flex">{renderStars(review.rating)}</div>
+							
 						</div>
 
 						<p className="mb-4 text-gray-700">{review.comment}</p>
 
-						<div className="flex items-center justify-between">
-							<button
-								onClick={() => handleHelpfulClick(review.id)}
-								className={`flex items-center text-sm ${
-									review.isHelpful ? "text-amber-500" : "text-gray-500"
-								} hover:text-amber-500`}
-							>
-								<FiThumbsUp className="mr-1" />
-								<span>Helpful ({review.helpful})</span>
-							</button>
-
-							<button className="flex items-center text-sm text-gray-500 hover:text-amber-500">
-								<FiMessageSquare className="mr-1" />
-								<span>Reply</span>
-							</button>
-						</div>
+						
 					</div>
 				))}
 			</div>
 
-			<div className="mt-8 flex justify-center">
-				<button className="rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50">
-					Load More Reviews
-				</button>
-			</div>
+			
 		</section>
 	);
 }
