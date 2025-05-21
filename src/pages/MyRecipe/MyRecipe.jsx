@@ -1,22 +1,25 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext";
 
 const MyRecipe = () => {
-	const data = useLoaderData(); 
+    const { user } = useContext(AuthContext);
+		const [myRecipe, setMyRecipe] = useState([]);
+  
 
-	if (!data || data.length === 0) {
-		return (
-			<div className="max-w-4xl mx-auto p-6 bg-white rounded-lg shadow-md my-8">
-				<h2 className="text-2xl font-bold text-center text-gray-700">
-					No recipes found.
-				</h2>
-			</div>
-		);
-	}
+    useEffect(() => {
+        if (user?.email) {
+         fetch(`http://localhost:3000/recipes/user/${user.email}`)
+						.then((res) => res.json())
+						.then((data) => setMyRecipe(data));
+        }
+      }, [user?.email]);
+
+	
 
 	return (
 		<div className="max-w-4xl mx-auto my-8">
-			{data.map((recipe) => (
+			{myRecipe.map((recipe) => (
 				<section
 					key={recipe._id}
 					className="bg-white rounded-lg shadow-md p-6 mb-8"
@@ -58,7 +61,7 @@ const MyRecipe = () => {
 						</div>
 						<div>
 							<h3 className="font-semibold">Categories</h3>
-							<p>{recipe.categories.join(", ")}</p>
+							
 						</div>
 					</div>
 				</section>

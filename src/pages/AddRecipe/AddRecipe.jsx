@@ -2,45 +2,41 @@ import React, { use } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import Swal from "sweetalert2";
 
-
 const AddRecipe = () => {
+	const { user } = use(AuthContext);
 
-const { user } = use(AuthContext);
+	const handleAddRecipe = (e) => {
+		e.preventDefault();
+		const form = e.target;
+		const formData = new FormData(form);
 
-    const handleAddRecipe =(e) =>{
-        e.preventDefault();
-				const form = e.target;
-				const formData = new FormData(form);
+		const newRecipe = Object.fromEntries(formData.entries());
+		console.log(newRecipe);
 
-				const newRecipe = Object.fromEntries(formData.entries());
-				console.log(newRecipe);
-
-                fetch("http://localhost:3000/recipes", {
-									method: "POST",
-									headers: {
-										"Content-Type": "application/json",
-									},
-									body: JSON.stringify(newRecipe),
-								})
-									.then((res) => res.json())
-									.then(data =>
-										Swal.fire({
-														position: "top-end",
-														icon: "success",
-														title: "Recipe Added Successfully",
-														showConfirmButton: false,
-														timer: 1500,
-													}))
-                
-    
-    }
-  return (
+		fetch("http://localhost:3000/recipes", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify(newRecipe),
+		})
+			.then((res) => res.json())
+			.then((data) =>
+				Swal.fire({
+					position: "top-end",
+					icon: "success",
+					title: "Recipe Added Successfully",
+					showConfirmButton: false,
+					timer: 1500,
+				})
+			);
+	};
+	return (
 		<div>
 			<form
 				onSubmit={handleAddRecipe}
 				className="max-w-2xl mt-5 mx-auto p-6 bg-white rounded-lg shadow-lg "
 			>
-				
 				<h2 className="text-2xl font-bold text-center mb-6">Add Recipe</h2>
 				{/**read only email  */}
 				<div className="mb-4">
@@ -205,6 +201,6 @@ const { user } = use(AuthContext);
 			</form>
 		</div>
 	);
-}
+};
 
-export default AddRecipe
+export default AddRecipe;
