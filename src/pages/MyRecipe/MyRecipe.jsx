@@ -51,11 +51,11 @@ const MyRecipe = () => {
 	
 
 	return (
-		<div className="max-w-4xl mx-auto my-8">
+		<div className="grid grid-cols-3 gap-8  my-8">
 			{myRecipe.map((recipe) => (
 				<section
 					key={recipe._id}
-					className="bg-white rounded-lg shadow-md p-6 mb-8"
+					className=" bg-white rounded-lg shadow-md p-6 mb-8"
 				>
 					<img
 						src={recipe.image}
@@ -69,12 +69,10 @@ const MyRecipe = () => {
 
 					<div className="mb-6">
 						<h2 className="text-xl font-semibold mb-2">Ingredients</h2>
-						{/* Uncomment below if ingredients are an array */}
-						{/* <ul className="list-disc list-inside text-gray-700">
-              {recipe.ingredients.map((item, i) => (
-                <li key={i}>{item}</li>
-              ))}
-            </ul> */}
+						
+						
+              {recipe.ingredients}
+           
 					</div>
 
 					<div className="mb-6">
@@ -101,9 +99,8 @@ const MyRecipe = () => {
 
 					{/* Buttons */}
 					<div className="flex gap-4">
-						<Link to={`/updaterecipe/${recipe._id}`}
-						
-							
+						<Link
+							to={`/updaterecipe/${recipe._id}`}
 							className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition"
 						>
 							Update

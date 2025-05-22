@@ -6,19 +6,29 @@ import Swal from "sweetalert2";
 const Details = () => {
 	const data = useLoaderData();
 
-	const [likes, setLikes] = useState(0);
+	const [likes, setLikes] = useState(data.likes || 0);
 
-    const handleLike = () => {
-			const newLikes = likes + 1;
-			setLikes(newLikes);
+	const handleLike = async () => {
+		try {
+			const response = await fetch(
+				`http://localhost:3000/recipes/${data._id}/like`,
+				{
+					method: "PUT",
+				}
+			);
+			const updatedRecipe = await response.json();
+			setLikes(updatedRecipe.likes);
 			Swal.fire({
 				position: "top-end",
 				icon: "success",
-				title: `${newLikes} people interested in`,
+				title: `${updatedRecipe.likes} people interested in`,
 				showConfirmButton: false,
 				timer: 1500,
 			});
-		};
+		} catch (error) {
+			console.error("Failed to update likes", error);
+		}
+	};
 
 	return (
 		<section className="max-w-4xl mx-auto p-6 bg-white rounded-lg shadow-md my-8">

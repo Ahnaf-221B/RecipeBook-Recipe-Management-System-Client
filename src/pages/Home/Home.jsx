@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Banner from '../../components/Banner'
 import { Link, useLoaderData } from 'react-router-dom';
 import RecipeCard from '../RecipeCard/RecipeCard';
@@ -8,6 +8,15 @@ import RecipeReviews from '../../components/Review';
 const Home = () => {
   const data = useLoaderData() || [];
   const [recipes, setrecipes] = useState(data);
+  const [topRecipes, setTopRecipes] = useState([]);
+
+  useEffect(() => {
+		fetch("http://localhost:3000/recipes/top-liked")
+			.then((res) => res.json())
+			.then((data) => setTopRecipes(data))
+			.catch((err) => console.error(err));
+	}, []);
+  
   return (
 		<div>
 			<Banner />
@@ -16,7 +25,7 @@ const Home = () => {
 					Top Recipes
 				</div>
 				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-12">
-					{data.map((recipe) => (
+					{topRecipes.map((recipe) => (
 						<RecipeCard key={recipe._id} recipe={recipe}>
 							recipes={recipes}
 							setrecipes={setrecipes}
