@@ -2,6 +2,7 @@ import React, { use, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 import { AuthContext } from "../context/AuthContext";
+import { Tooltip } from "react-tooltip";
 
 const Header = () => {
 	const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -128,6 +129,8 @@ const Header = () => {
 									className="w-10 h-10 rounded-full"
 								/>
 							</button>
+							<Tooltip id="userTooltip" place="bottom" effect="solid" />
+
 							{dropdownOpen && (
 								<div className="absolute right-0 mt-2 bg-white shadow-lg rounded-lg w-60 h-auto z-50">
 									<div className="py-2 px-4 text-sm text-gray-700">

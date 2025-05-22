@@ -13,6 +13,7 @@ import AllRecipe from './pages/AllRecipe/AllRecipe.jsx'
 import PrivateRoute from './context/PrivateRoute.jsx'
 import Details from './pages/Details/Details.jsx'
 import MyRecipe from './pages/MyRecipe/MyRecipe.jsx'
+import UpdateRecipe from './pages/UpdateRecipe/UpdateRecipe.jsx'
 
 const router = createBrowserRouter([
 	{
@@ -54,7 +55,7 @@ const router = createBrowserRouter([
 				path: "/details/:id",
 				element: (
 					<PrivateRoute>
-						{" "}
+						
 						<Details></Details>
 					</PrivateRoute>
 				),
@@ -70,6 +71,12 @@ const router = createBrowserRouter([
 				),
 				loader: ({ params }) =>
 					fetch(`http://localhost:3000/recipes/${params.email}`),
+			},
+			{
+				path: "/updaterecipe/:id",
+				loader: ({ params }) =>
+					fetch(`http://localhost:3000/recipes/${params.id}`),
+				Component: UpdateRecipe,
 			},
 		],
 	},

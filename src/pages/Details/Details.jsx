@@ -24,7 +24,7 @@ const Details = () => {
 		<section className="max-w-4xl mx-auto p-6 bg-white rounded-lg shadow-md my-8">
 			<img
 				src={data.image}
-				alt={data.title}
+				
 				className="w-full h-64 object-cover rounded-md mb-6"
 			/>
 
@@ -48,6 +48,10 @@ const Details = () => {
 				<div>
 					<h3 className="font-semibold">Preparation Time</h3>
 					<p>{data.preparationTime} mins</p>
+				</div>
+				<div>
+					<h3 className="font-semibold">Category</h3>
+					<p>{data.categories}</p>
 				</div>
 			</div>
 
