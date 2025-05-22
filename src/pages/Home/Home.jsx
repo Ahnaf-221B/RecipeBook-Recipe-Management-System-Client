@@ -3,7 +3,7 @@ import Banner from '../../components/Banner'
 import { Link, useLoaderData } from 'react-router-dom';
 import RecipeCard from '../RecipeCard/RecipeCard';
 import FeaturedCategories from '../../components/Featured';
-import RecipeReviews from '../../components/review';
+import RecipeReviews from '../../components/Review';
 
 const Home = () => {
   const data = useLoaderData() || [];
@@ -11,30 +11,28 @@ const Home = () => {
   return (
 		<div>
 			<Banner />
-			<div className='bg-amber-50 rounded-lg m-1 mt-10'>
-				
-			<div className="mt-10 flex justify-center items-center font-bold text-3xl">
-				Top Recipes
-			</div>
-			<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-12">
-				{data.map((recipe) => (
-					<RecipeCard key={recipe._id} recipe={recipe}>
-						recipes={recipes}
-						setrecipes={setrecipes}
-					</RecipeCard>
-				))}
-			</div>
+			<div className="bg-amber-50 rounded-lg m-1 mt-10">
+				<div className="mt-10 text-lime-400  flex justify-center items-center font-bold text-3xl">
+					Top Recipes
+				</div>
+				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-12">
+					{data.map((recipe) => (
+						<RecipeCard key={recipe._id} recipe={recipe}>
+							recipes={recipes}
+							setrecipes={setrecipes}
+						</RecipeCard>
+					))}
+				</div>
 
-			<div className="flex justify-center mt-4 ">
-				<Link
-					className="w-70  bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition text-center mb-5"
-					to="/allrecipe"
-				>
-					See All
-				</Link>
+				<div className="flex justify-center mt-4 ">
+					<Link
+						className="w-70  bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition text-center mb-5"
+						to="/allrecipe"
+					>
+						See All
+					</Link>
+				</div>
 			</div>
-			</div>
-
 
 			<FeaturedCategories></FeaturedCategories>
 			<RecipeReviews></RecipeReviews>

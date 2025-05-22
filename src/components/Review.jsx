@@ -1,10 +1,7 @@
-
-
 import { useState } from "react";
 
-
 function RecipeReviews() {
-	// Sample review data
+	
 	const initialReviews = [
 		{
 			id: 1,
@@ -54,29 +51,21 @@ function RecipeReviews() {
 
 	const [reviews, setReviews] = useState(initialReviews);
 
-
-	
-	
-
-
-
-	
-
 	return (
-		<section className="my-12 ">
+		<section className="my-12">
 			<div className="mb-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
 				<div>
-					<h2 className="text-2xl font-bold text-gray-900">Customer Reviews</h2>
-					
+					<h2 className="text-3xl font-bold text-lime-400 ">
+						Customer Reviews
+					</h2>
 				</div>
-				
 			</div>
 
-			<div className="space-y-6 grid grid-cols-4  p-10 gap-20">
+			<div className="space-y-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 p-10 gap-20">
 				{reviews.map((review) => (
 					<div
 						key={review.id}
-						className="rounded-lg border border-gray-200 bg-white p-6 shadow-sm"
+						className="rounded-lg border border-gray-200 bg-white p-6 shadow-sm dark:bg-gray-800 dark:border-gray-700 dark:text-white"
 					>
 						<div className="mb-4 flex items-center justify-between">
 							<div className="flex items-center">
@@ -86,21 +75,24 @@ function RecipeReviews() {
 									className="mr-4 h-12 w-12 rounded-full object-cover"
 								/>
 								<div>
-									<h3 className="font-medium text-gray-900">{review.user}</h3>
-									<p className="text-sm text-gray-500">{review.date}</p>
+									<h3 className="font-medium text-gray-900 dark:text-white">
+										{review.user}
+									</h3>
+									<p className="text-sm text-gray-500 dark:text-gray-300">
+										{review.date}
+									</p>
 								</div>
 							</div>
-							
 						</div>
 
-						<p className="mb-4 text-gray-700">{review.comment}</p>
+						<p className="mb-4 text-gray-700 dark:text-gray-300">
+							{review.comment}
+						</p>
 
 						
 					</div>
 				))}
 			</div>
-
-			
 		</section>
 	);
 }
