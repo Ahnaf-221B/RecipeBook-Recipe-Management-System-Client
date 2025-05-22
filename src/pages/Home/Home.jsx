@@ -6,15 +6,23 @@ import FeaturedCategories from '../../components/Featured';
 import RecipeReviews from '../../components/Review';
 
 const Home = () => {
-  const data = useLoaderData() || [];
-  const [recipes, setrecipes] = useState(data);
+  
+ 
   const [topRecipes, setTopRecipes] = useState([]);
 
+
   useEffect(() => {
-		fetch("http://localhost:3000/recipes/top-liked")
-			.then((res) => res.json())
-			.then((data) => setTopRecipes(data))
-			.catch((err) => console.error(err));
+		const fetchTopRecipes = async () => {
+			try {
+				const response = await fetch("http://localhost:3000/recipes/like/top");
+				const data = await response.json();
+				setTopRecipes(data);
+			} catch (error) {
+				console.error("Failed to fetch top recipes", error);
+			}
+		};
+
+		fetchTopRecipes();
 	}, []);
   
   return (
@@ -27,8 +35,7 @@ const Home = () => {
 				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-12">
 					{topRecipes.map((recipe) => (
 						<RecipeCard key={recipe._id} recipe={recipe}>
-							recipes={recipes}
-							setrecipes={setrecipes}
+							
 						</RecipeCard>
 					))}
 				</div>

@@ -2,35 +2,37 @@ import React, { useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import { FaThumbsUp } from "react-icons/fa";
 import Swal from "sweetalert2";
+import "sweetalert2/dist/sweetalert2.min.css";
+
 
 const Details = () => {
 	const data = useLoaderData();
 
 	const [likes, setLikes] = useState(data.likes || 0);
 
-	const handleLike = async () => {
-		try {
-			const response = await fetch(
-				`http://localhost:3000/recipes/${data._id}/like`,
-				{
-					method: "PUT",
-				}
-			);
-			const updatedRecipe = await response.json();
-			setLikes(updatedRecipe.likes);
-			Swal.fire({
-				position: "top-end",
-				icon: "success",
-				title: `${updatedRecipe.likes} people interested in`,
-				showConfirmButton: false,
-				timer: 1500,
-			});
-		} catch (error) {
-			console.error("Failed to update likes", error);
-		}
-	};
+
+    const handleLike = async () => {
+		setLikes((prevLikes) => prevLikes + 1);
+			try {
+				const response = await fetch(
+					`http://localhost:3000/recipes/${data._id}/like`,
+					{
+						method: "PUT",
+					}
+				);
+				const updatedRecipe = await response.json();
+
+				setLikes(updatedRecipe.value.likes);
+
+			 
+			} catch (error) {
+				console.error("Failed to update likes", error);
+			}
+		};
 
 	return (
+		<div>
+			<p className="font-bold text-2xl flex justify-end">{likes} people interested in</p>
 		<section className="max-w-4xl mx-auto p-6 bg-white rounded-lg shadow-md my-8">
 			<img
 				src={data.image}
@@ -73,7 +75,9 @@ const Details = () => {
 				<FaThumbsUp />
 				Like {likes}
 			</button>
-		</section>
+		</section>	
+		</div>
+		
 	);
 };
 
