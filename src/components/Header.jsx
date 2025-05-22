@@ -70,9 +70,9 @@ const Header = () => {
 				<Link to="/myrecipe" className="text-lime-400 py-2 px-3">
 					My Recipe
 				</Link>
-				<Link to="/mywishlist" className="text-lime-400 py-2 px-3">
+				{/* <Link to="/mywishlist" className="text-lime-400 py-2 px-3">
 					My Wishlist
-				</Link>
+				</Link> */}
 			</nav>
 
 			<div className="mr-2">

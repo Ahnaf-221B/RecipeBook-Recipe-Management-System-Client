@@ -14,12 +14,13 @@ import PrivateRoute from './context/PrivateRoute.jsx'
 import Details from './pages/Details/Details.jsx'
 import MyRecipe from './pages/MyRecipe/MyRecipe.jsx'
 import UpdateRecipe from './pages/UpdateRecipe/UpdateRecipe.jsx'
+import ErrorPage from './pages/ErrorPage/ErrorPage.jsx'
 
 const router = createBrowserRouter([
 	{
 		path: "/",
 		element: <MainLayout />,
-
+		errorElement : <ErrorPage></ErrorPage>,
 		children: [
 			{
 				index: true,
