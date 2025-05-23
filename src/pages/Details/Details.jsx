@@ -1,17 +1,30 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import { FaThumbsUp } from "react-icons/fa";
+import { AuthContext } from "../../context/AuthContext";
 import Swal from "sweetalert2";
-import "sweetalert2/dist/sweetalert2.min.css";
 
 
 const Details = () => {
 	const data = useLoaderData();
-
+	const { user } = useContext(AuthContext);
 	const [likes, setLikes] = useState(data.likes || 0);
-
+	
+	const isOwner = user?.email === data.email;
 
     const handleLike = async () => {
+
+		if (isOwner) {
+			// Optionally, alert user they can't like own recipe
+			Swal.fire({
+				position: "top-end",
+				icon: "warning",
+				title: "You can't like you own recipe",
+				showConfirmButton: false,
+				timer: 1500,
+			});
+			return;
+		}
 		setLikes((prevLikes) => prevLikes + 1);
 			try {
 				const response = await fetch(

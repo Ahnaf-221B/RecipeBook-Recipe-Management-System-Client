@@ -33,6 +33,8 @@ const Header = () => {
 		const localTheme = localStorage.getItem("theme");
 		document.querySelector("html").setAttribute("data-theme", localTheme);
 	}, [theme]);
+	
+	
 
 	const handleToggleTheme = (e) => {
 		if (e.target.checked) {
@@ -118,10 +120,17 @@ const Header = () => {
 					</>
 				) : (
 					<>
-						<div className="relative">
+						<div
+							className="relative"
+							onMouseEnter={() => setDropdownOpen(true)}
+							onMouseLeave={() => setDropdownOpen(false)}
+						>
 							<button
 								onClick={toggleDropdown}
 								className="flex items-center space-x-2"
+								data-tooltip-id="user-tooltip"
+								
+								data-tooltip-place="bottom"
 							>
 								<img
 									src={user.photoURL || "https://via.placeholder.com/40"}
@@ -129,14 +138,14 @@ const Header = () => {
 									className="w-10 h-10 rounded-full"
 								/>
 							</button>
-							<Tooltip id="userTooltip" place="bottom" effect="solid" />
-
+							<Tooltip id="user-tooltip" />
 							{dropdownOpen && (
 								<div className="absolute right-0 mt-2 bg-white shadow-lg rounded-lg w-60 h-auto z-50">
 									<div className="py-2 px-4 text-sm text-gray-700">
+										<h2 className="font-bold text-lg">{user.displayName}</h2>
 										<button
 											onClick={handleSignOut}
-											className="btn btn-sm bg-red-700 rounded-lg text-left text-lg mt-4 py-5 px-4 text-white hover:bg-red-100"
+											className="btn btn-sm bg-red-700 rounded-lg text-left text-lg mt-4 py-3 px-4 text-white hover:bg-red-100"
 										>
 											Sign Out
 										</button>
