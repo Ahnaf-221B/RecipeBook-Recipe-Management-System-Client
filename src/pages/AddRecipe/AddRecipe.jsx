@@ -13,7 +13,7 @@ const AddRecipe = () => {
 		const newRecipe = Object.fromEntries(formData.entries());
 		console.log(newRecipe);
 
-		fetch("http://localhost:3000/recipes", {
+		fetch("https://my-recipe-store-server.vercel.app/recipes", {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",

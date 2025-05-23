@@ -1,55 +1,52 @@
-import React, { use } from 'react'
+import React, { use } from "react";
 import { AuthContext } from "../../context/AuthContext";
-import Swal from 'sweetalert2';
-import { useLoaderData } from 'react-router-dom';
+import Swal from "sweetalert2";
+import { useLoaderData } from "react-router-dom";
 
 const UpdateRecipe = () => {
-    const {
-			_id,
-		
-			image,
-			title,
-			ingredients,
-			instructions,
-			cuisineType,
-			preparationTime,
-            categories
-		} = useLoaderData();
-        console.log(title,ingredients);
-        
+	const {
+		_id,
 
-    const { user } = use(AuthContext);
-    const handleUpdateRecipe =(e) =>{
+		image,
+		title,
+		ingredients,
+		instructions,
+		cuisineType,
+		preparationTime,
+		categories,
+	} = useLoaderData();
+	console.log(title, ingredients);
 
-        e.preventDefault();
-        const form = e.target;
-				const formData = new FormData(form);
-				const updateRecipe = Object.fromEntries(formData.entries());
-				console.log(updateRecipe);
+	const { user } = use(AuthContext);
+	const handleUpdateRecipe = (e) => {
+		e.preventDefault();
+		const form = e.target;
+		const formData = new FormData(form);
+		const updateRecipe = Object.fromEntries(formData.entries());
+		console.log(updateRecipe);
 
-                fetch(`http://localhost:3000/recipes/${_id}`, {
-									method: "PUT",
-									headers: {
-										"Content-Type": "application/json",
-									},
-									body: JSON.stringify(updateRecipe),
-								})
-									.then((res) => res.json())
-									.then((data) => {
-										if (data.modifiedCount) {
-											Swal.fire({
-												position: "top-end",
-												icon: "success",
-												title: "Coffe Updated Successfully",
-												showConfirmButton: false,
-												timer: 1500,
-											});
-										}
-										console.log(data);
-									});
-
-    }
-  return (
+		fetch(`https://my-recipe-store-server.vercel.app/recipes/${_id}`, {
+			method: "PUT",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify(updateRecipe),
+		})
+			.then((res) => res.json())
+			.then((data) => {
+				if (data.modifiedCount) {
+					Swal.fire({
+						position: "top-end",
+						icon: "success",
+						title: "Coffe Updated Successfully",
+						showConfirmButton: false,
+						timer: 1500,
+					});
+				}
+				console.log(data);
+			});
+	};
+	return (
 		<div>
 			<form
 				onSubmit={handleUpdateRecipe}
@@ -247,6 +244,6 @@ const UpdateRecipe = () => {
 			</form>
 		</div>
 	);
-}
+};
 
-export default UpdateRecipe
+export default UpdateRecipe;

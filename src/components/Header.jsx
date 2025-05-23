@@ -8,6 +8,9 @@ const Header = () => {
 	const [dropdownOpen, setDropdownOpen] = useState(false);
 	const { user, signOutUser } = use(AuthContext);
 	const navigate = useNavigate();
+	const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+	const toggleMobileMenu = () => setMobileMenuOpen(!mobileMenuOpen);
 	
 	const handleSignOut = () => {
 		signOutUser()
@@ -46,7 +49,7 @@ const Header = () => {
 
 	return (
 		<header className=" shadow-md py-4 px-4 md:px-20 flex justify-between items-center relative">
-			<div className="flex items-center space-x-2">
+			<div className="flex items-center space-x-2 flex-shrink-0">
 				<img
 					src="https://i.postimg.cc/gc3L1KM1/image.png"
 					alt="logo"
@@ -57,27 +60,110 @@ const Header = () => {
 				</span>
 			</div>
 
-			<nav className="hidden md:flex space-x-4 font-semibold">
-				<Link to="/" className="text-lime-400 py-2 px-3">
+			<div className="hidden md:flex space-x-4 font-semibold">
+				<Link to="/" className="text-lime-400 py-2 px-3 hover:text-lime-600">
 					Home
 				</Link>
-				<Link to="/allrecipe" className="text-lime-400 py-2 px-3">
+				<Link
+					to="/allrecipe"
+					className="text-lime-400 py-2 px-3 hover:text-lime-600"
+				>
 					All Recipe
 				</Link>
-
-				<Link to="/addrecipe" className=" text-lime-400 py-2 px-5">
+				<Link
+					to="/addrecipe"
+					className="text-lime-400 py-2 px-5 hover:text-lime-600"
+				>
 					Add Recipe
 				</Link>
-
-				<Link to="/myrecipe" className="text-lime-400 py-2 px-3">
+				<Link
+					to="/myrecipe"
+					className="text-lime-400 py-2 px-3 hover:text-lime-600"
+				>
 					My Recipe
 				</Link>
-				{/* <Link to="/mywishlist" className="text-lime-400 py-2 px-3">
-					My Wishlist
-				</Link> */}
-			</nav>
+			</div>
 
-			<div className="mr-2">
+			{/* Mobile menu button */}
+			<div className="md:hidden">
+				<button
+					onClick={toggleMobileMenu}
+					type="button"
+					className="inline-flex items-center justify-center p-2 rounded-md text-lime-500 hover:text-white hover:bg-lime-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+					aria-controls="mobile-menu"
+					aria-expanded={mobileMenuOpen}
+				>
+					<span className="sr-only">Open main menu</span>
+					{/* Hamburger icon */}
+					{!mobileMenuOpen ? (
+						<svg
+							className="block h-6 w-6"
+							xmlns="http://www.w3.org/2000/svg"
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke="currentColor"
+							aria-hidden="true"
+						>
+							<path
+								strokeLinecap="round"
+								strokeLinejoin="round"
+								strokeWidth={2}
+								d="M4 8h16M4 16h16"
+							/>
+						</svg>
+					) : (
+						/* Close icon */
+						<svg
+							className="block h-6 w-6"
+							xmlns="http://www.w3.org/2000/svg"
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke="currentColor"
+							aria-hidden="true"
+						>
+							<path
+								strokeLinecap="round"
+								strokeLinejoin="round"
+								strokeWidth={2}
+								d="M6 18L18 6M6 6l12 12"
+							/>
+						</svg>
+					)}
+				</button>
+			</div>
+
+			{mobileMenuOpen && (
+				<div className="md:hidden" id="mobile-menu">
+					<div className="px-2 pt-2 pb-3 space-y-1 font-semibold bg-white shadow-md">
+						<Link
+							to="/"
+							className="block px-3 py-2 rounded-md text-lime-400 hover:bg-lime-100 hover:text-lime-600"
+						>
+							Home
+						</Link>
+						<Link
+							to="/allrecipe"
+							className="block px-3 py-2 rounded-md text-lime-400 hover:bg-lime-100 hover:text-lime-600"
+						>
+							All Recipe
+						</Link>
+						<Link
+							to="/addrecipe"
+							className="block px-3 py-2 rounded-md text-lime-400 hover:bg-lime-100 hover:text-lime-600"
+						>
+							Add Recipe
+						</Link>
+						<Link
+							to="/myrecipe"
+							className="block px-3 py-2 rounded-md text-lime-400 hover:bg-lime-100 hover:text-lime-600"
+						>
+							My Recipe
+						</Link>
+					</div>
+				</div>
+			)}
+
+			<div className="">
 				<label className="swap swap-rotate">
 					{/* this hidden checkbox controls the state */}
 					<input onChange={handleToggleTheme} type="checkbox" />
@@ -129,7 +215,6 @@ const Header = () => {
 								onClick={toggleDropdown}
 								className="flex items-center space-x-2"
 								data-tooltip-id="user-tooltip"
-								
 								data-tooltip-place="bottom"
 							>
 								<img
@@ -140,7 +225,7 @@ const Header = () => {
 							</button>
 							<Tooltip id="user-tooltip" />
 							{dropdownOpen && (
-								<div className="absolute right-0 mt-2 bg-white shadow-lg rounded-lg w-60 h-auto z-50">
+								<div className="absolute right-0 mt-2 bg-white shadow-lg rounded-lg w-48 max-w-xs h-auto z-50">
 									<div className="py-2 px-4 text-sm text-gray-700">
 										<h2 className="font-bold text-lg">{user.displayName}</h2>
 										<button

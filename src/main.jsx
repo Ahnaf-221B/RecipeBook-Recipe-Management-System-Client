@@ -1,30 +1,31 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.jsx'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import MainLayout from './layout/MainLayout.jsx'
-import Home from './pages/Home/Home.jsx'
-import SignIn from './pages/SignIn/SignIn.jsx'
-import SignUp from './pages/SignUp/SignUp.jsx'
-import AuthProvider from './context/AuthProvider.jsx'
-import AddRecipe from './pages/AddRecipe/AddRecipe.jsx'
-import AllRecipe from './pages/AllRecipe/AllRecipe.jsx'
-import PrivateRoute from './context/PrivateRoute.jsx'
-import Details from './pages/Details/Details.jsx'
-import MyRecipe from './pages/MyRecipe/MyRecipe.jsx'
-import UpdateRecipe from './pages/UpdateRecipe/UpdateRecipe.jsx'
-import ErrorPage from './pages/ErrorPage/ErrorPage.jsx'
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import "./index.css";
+import App from "./App.jsx";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import MainLayout from "./layout/MainLayout.jsx";
+import Home from "./pages/Home/Home.jsx";
+import SignIn from "./pages/SignIn/SignIn.jsx";
+import SignUp from "./pages/SignUp/SignUp.jsx";
+import AuthProvider from "./context/AuthProvider.jsx";
+import AddRecipe from "./pages/AddRecipe/AddRecipe.jsx";
+import AllRecipe from "./pages/AllRecipe/AllRecipe.jsx";
+import PrivateRoute from "./context/PrivateRoute.jsx";
+import Details from "./pages/Details/Details.jsx";
+import MyRecipe from "./pages/MyRecipe/MyRecipe.jsx";
+import UpdateRecipe from "./pages/UpdateRecipe/UpdateRecipe.jsx";
+import ErrorPage from "./pages/ErrorPage/ErrorPage.jsx";
+import { ToastContainer } from "react-toastify";
 
 const router = createBrowserRouter([
 	{
 		path: "/",
 		element: <MainLayout />,
-		errorElement : <ErrorPage></ErrorPage>,
+		errorElement: <ErrorPage></ErrorPage>,
 		children: [
 			{
 				index: true,
-				
+
 				Component: Home,
 			},
 			{
@@ -50,18 +51,20 @@ const router = createBrowserRouter([
 						<AllRecipe></AllRecipe>
 					</PrivateRoute>
 				),
-				loader: () => fetch("http://localhost:3000/recipes"),
+				loader: () =>
+					fetch("https://my-recipe-store-server.vercel.app/recipes"),
 			},
 			{
 				path: "/details/:id",
 				element: (
 					<PrivateRoute>
-						
 						<Details></Details>
 					</PrivateRoute>
 				),
 				loader: ({ params }) =>
-					fetch(`http://localhost:3000/recipes/${params.id}`),
+					fetch(
+						`https://my-recipe-store-server.vercel.app/recipes/${params.id}`
+					),
 			},
 			{
 				path: "/myrecipe",
@@ -71,23 +74,27 @@ const router = createBrowserRouter([
 					</PrivateRoute>
 				),
 				loader: ({ params }) =>
-					fetch(`http://localhost:3000/recipes/${params.email}`),
+					fetch(
+						`https://my-recipe-store-server.vercel.app/recipes/${params.email}`
+					),
 			},
 			{
 				path: "/updaterecipe/:id",
 				loader: ({ params }) =>
-					fetch(`http://localhost:3000/recipes/${params.id}`),
+					fetch(
+						`https://my-recipe-store-server.vercel.app/recipes/${params.id}`
+					),
 				Component: UpdateRecipe,
 			},
 		],
 	},
 ]);
 
-createRoot(document.getElementById('root')).render(
-  <StrictMode>
-     <AuthProvider>
-       <RouterProvider router={router}></RouterProvider>
-     </AuthProvider>
-   
-  </StrictMode>,
-)
+createRoot(document.getElementById("root")).render(
+	<StrictMode>
+		<AuthProvider>
+			<ToastContainer></ToastContainer>
+			<RouterProvider router={router}></RouterProvider>
+		</AuthProvider>
+	</StrictMode>
+);

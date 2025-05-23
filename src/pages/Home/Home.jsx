@@ -1,20 +1,19 @@
-import React, { useEffect, useState } from 'react'
-import Banner from '../../components/Banner'
-import { Link, useLoaderData } from 'react-router-dom';
-import RecipeCard from '../RecipeCard/RecipeCard';
-import FeaturedCategories from '../../components/Featured';
-import RecipeReviews from '../../components/Review';
+import React, { useEffect, useState } from "react";
+import Banner from "../../components/Banner";
+import { Link, useLoaderData } from "react-router-dom";
+import RecipeCard from "../RecipeCard/RecipeCard";
+import FeaturedCategories from "../../components/Featured";
+import RecipeReviews from "../../components/Review";
 
 const Home = () => {
-  
- 
-  const [topRecipes, setTopRecipes] = useState([]);
+	const [topRecipes, setTopRecipes] = useState([]);
 
-
-  useEffect(() => {
+	useEffect(() => {
 		const fetchTopRecipes = async () => {
 			try {
-				const response = await fetch("http://localhost:3000/recipes/like/top");
+				const response = await fetch(
+					"https://my-recipe-store-server.vercel.app/recipes/like/top"
+				);
 				const data = await response.json();
 				setTopRecipes(data);
 			} catch (error) {
@@ -24,8 +23,8 @@ const Home = () => {
 
 		fetchTopRecipes();
 	}, []);
-  
-  return (
+
+	return (
 		<div>
 			<Banner />
 			<div className="bg-amber-50 rounded-lg m-1 mt-10">
@@ -34,9 +33,7 @@ const Home = () => {
 				</div>
 				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-12">
 					{topRecipes.map((recipe) => (
-						<RecipeCard key={recipe._id} recipe={recipe}>
-							
-						</RecipeCard>
+						<RecipeCard key={recipe._id} recipe={recipe}></RecipeCard>
 					))}
 				</div>
 
@@ -54,6 +51,6 @@ const Home = () => {
 			<RecipeReviews></RecipeReviews>
 		</div>
 	);
-}
+};
 
-export default Home
+export default Home;

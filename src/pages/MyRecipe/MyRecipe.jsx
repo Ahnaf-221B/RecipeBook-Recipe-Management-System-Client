@@ -9,7 +9,9 @@ const MyRecipe = () => {
 
 	useEffect(() => {
 		if (user?.email) {
-			fetch(`http://localhost:3000/recipes/user/${user.email}`)
+			fetch(
+				`https://my-recipe-store-server.vercel.app/recipes/user/${user.email}`
+			)
 				.then((res) => res.json())
 				.then((data) => setMyRecipe(data));
 		}
@@ -29,7 +31,7 @@ const MyRecipe = () => {
 			console.log(result.isConfirmed);
 
 			if (result.isConfirmed) {
-				fetch(`http://localhost:3000/recipes/${_id}`, {
+				fetch(`https://my-recipe-store-server.vercel.app/recipes/${_id}`, {
 					method: "DELETE",
 				})
 					.then((res) => res.json())
@@ -48,10 +50,9 @@ const MyRecipe = () => {
 			}
 		});
 	};
-	
 
 	return (
-		<div className="grid grid-cols-3 gap-8  my-8">
+		<div className="grid grid-cols-1 md:grid md:grid-cols-3 gap-8  my-8">
 			{myRecipe.map((recipe) => (
 				<section
 					key={recipe._id}
@@ -69,10 +70,8 @@ const MyRecipe = () => {
 
 					<div className="mb-6">
 						<h2 className="text-xl font-semibold mb-2">Ingredients</h2>
-						
-						
-              {recipe.ingredients}
-           
+
+						{recipe.ingredients}
 					</div>
 
 					<div className="mb-6">
