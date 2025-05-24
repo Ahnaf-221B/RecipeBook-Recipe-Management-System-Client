@@ -39,14 +39,16 @@ const Footer = () => {
 						<h3 className="text-lg font-semibold">Follow Us</h3>
 						<div className="flex space-x-4 justify-center">
 							<Link
-								href="https://facebook.com"
+								href="https://www.facebook.com/share/1CZ8DirUV1/?mibextid=qi2Omg"
+								target="_blank"
 								className="bg-slate-800 p-2 rounded-full hover:bg-slate-700 transition-colors"
 								aria-label="Facebook"
 							>
 								<FaFacebook className="h-5 w-5" />
 							</Link>
 							<Link
-								href="https://twitter.com"
+								href="https://x.com/MostafaAhnaf_?t=RjcakY1qxqgbvzF7EzzfSA&s=09"
+								target="_blank"
 								className="bg-slate-800 p-2 rounded-full hover:bg-slate-700 transition-colors"
 								aria-label="Twitter"
 							>
@@ -54,6 +56,7 @@ const Footer = () => {
 							</Link>
 							<Link
 								href="https://instagram.com"
+								target="_blank"
 								className="bg-slate-800 p-2 rounded-full hover:bg-slate-700 transition-colors"
 								aria-label="Instagram"
 							>
