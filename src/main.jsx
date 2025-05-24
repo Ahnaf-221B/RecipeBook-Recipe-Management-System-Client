@@ -72,11 +72,8 @@ const router = createBrowserRouter([
 					<PrivateRoute>
 						<MyRecipe></MyRecipe>
 					</PrivateRoute>
-				),
-				loader: ({ params }) =>
-					fetch(
-						`https://my-recipe-store-server.vercel.app/recipes/${params.email}`
-					),
+				)
+				
 			},
 			{
 				path: "/updaterecipe/:id",
