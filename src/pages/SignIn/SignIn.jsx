@@ -156,7 +156,7 @@ const SignIn = () => {
 			</form>
 			<p className="mt-2">
 				New to website??{" "}
-				<Link to="/register" className="text-red-700">
+				<Link to="/signup" className="text-red-700">
 					Register
 				</Link>
 			</p>

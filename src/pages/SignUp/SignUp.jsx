@@ -14,7 +14,7 @@ const SignUp = () => {
 	const [showpass, setshowpass] = useState(false);
 	const location = useLocation();
 	const navigate = useNavigate();
-	const { createUser, registerGoogle } = use(AuthContext);
+	const { createUser, registerGoogle,updateUser } = use(AuthContext);
 
 	const handleRegister = (e) => {
 		e.preventDefault();
