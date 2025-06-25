@@ -27,11 +27,11 @@ const Home = () => {
 	return (
 		<div>
 			<Banner />
-			<div className="bg-amber-50 rounded-lg m-1 mt-10">
-				<div className="mt-10 text-lime-400  flex justify-center items-center font-bold text-3xl">
+			<div className="bg-amber-50 rounded-lg  mt-10">
+				<div className="mt-14 pt-10 text-lime-400  flex justify-center items-center font-bold text-3xl ">
 					Top Recipes
 				</div>
-				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-12">
+				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 p-12">
 					{topRecipes.map((recipe) => (
 						<RecipeCard key={recipe._id} recipe={recipe}></RecipeCard>
 					))}
@@ -39,7 +39,7 @@ const Home = () => {
 
 				<div className="flex justify-center mt-4 ">
 					<Link
-						className="w-70  bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition text-center mb-5"
+						className="w-70  bg-lime-500 text-black font-semibold py-2 rounded-md transition text-center mb-5"
 						to="/allrecipe"
 					>
 						See All

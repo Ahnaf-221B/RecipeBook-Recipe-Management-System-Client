@@ -40,11 +40,11 @@ const Details = () => {
 	};
 
 	return (
-		<div>
+		<div className="">
 			<p className="font-bold text-2xl flex justify-end">
 				{likes} people interested in
 			</p>
-			<section className="max-w-4xl mx-auto p-6 bg-white rounded-lg shadow-md my-8">
+			<section className="max-w-4xl mx-auto p-6 bg-amber-50 rounded-lg shadow-md my-8">
 				<img
 					src={data.image}
 					className="w-full h-64 object-cover rounded-md mb-6"
@@ -82,7 +82,7 @@ const Details = () => {
 				{/* Like Button */}
 				<button
 					onClick={handleLike}
-					className="flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition"
+					className="flex items-center gap-2 bg-lime-500 text-white px-4 py-2 rounded hover:bg-blue-700 transition"
 				>
 					<FaThumbsUp />
 					Like {likes}

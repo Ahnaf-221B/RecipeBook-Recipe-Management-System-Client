@@ -16,6 +16,9 @@ import MyRecipe from "./pages/MyRecipe/MyRecipe.jsx";
 import UpdateRecipe from "./pages/UpdateRecipe/UpdateRecipe.jsx";
 import ErrorPage from "./pages/ErrorPage/ErrorPage.jsx";
 import { ToastContainer } from "react-toastify";
+import AboutUs from "./components/AboutUs.jsx";
+import Contact from "./components/Contact.jsx";
+import Support from "./components/Support.jsx";
 
 const router = createBrowserRouter([
 	{
@@ -37,6 +40,18 @@ const router = createBrowserRouter([
 				Component: SignUp,
 			},
 			{
+				path: "/aboutus",
+				element: <AboutUs></AboutUs>,
+			},
+			{
+				path:'/contact',
+				element : <Contact></Contact>
+			},
+			{
+				path:'/support',
+				element: <Support></Support>
+			},
+			{
 				path: "/addrecipe",
 				element: (
 					<PrivateRoute>
@@ -46,11 +61,7 @@ const router = createBrowserRouter([
 			},
 			{
 				path: "/allrecipe",
-				element: (
-					<PrivateRoute>
-						<AllRecipe></AllRecipe>
-					</PrivateRoute>
-				),
+				element: <AllRecipe></AllRecipe>,
 				loader: () =>
 					fetch("https://my-recipe-store-server.vercel.app/recipes"),
 			},
@@ -72,8 +83,7 @@ const router = createBrowserRouter([
 					<PrivateRoute>
 						<MyRecipe></MyRecipe>
 					</PrivateRoute>
-				)
-				
+				),
 			},
 			{
 				path: "/updaterecipe/:id",

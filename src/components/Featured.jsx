@@ -55,10 +55,10 @@ function FeaturedCategories() {
 				{categories.map((category) => (
 					<div
 						key={category.id}
-						className={`flex cursor-pointer flex-col items-center rounded-lg p-6 text-center transition-all hover:shadow-lg border dark:bg-gray-800 dark:text-white`}
+						className={`flex cursor-pointer flex-col items-center rounded-lg p-6 text-center transition-all hover:shadow-lg border dark:bg-amber-50 dark:text-black`}
 						style={{ backgroundColor: category.color.split(" ")[0] }}
 					>
-						<div className="mb-3 rounded-full bg-white dark:bg-gray-700 p-3">
+						<div className="mb-3 rounded-full bg-amber-200  p-3">
 							{category.icon}
 						</div>
 						<h3 className="mb-1 text-lg font-semibold">{category.name}</h3>

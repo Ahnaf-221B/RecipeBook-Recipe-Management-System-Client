@@ -48,7 +48,7 @@ const Header = () => {
 	};
 
 	return (
-		<header className=" shadow-md py-4 px-4 md:px-20 flex justify-between items-center relative">
+		<header className=" shadow-md py-4 px-4 md:px-12 flex justify-between items-center relative sticky top-0 z-50 bg-amber-50 ">
 			<div className="flex items-center space-x-2 flex-shrink-0">
 				<img
 					src="https://i.postimg.cc/gc3L1KM1/image.png"
@@ -60,29 +60,78 @@ const Header = () => {
 				</span>
 			</div>
 
-			<div className="hidden md:flex space-x-4 font-semibold">
-				<Link to="/" className="text-lime-400 py-2 px-3 hover:text-lime-600">
-					Home
-				</Link>
-				<Link
-					to="/allrecipe"
-					className="text-lime-400 py-2 px-3 hover:text-lime-600"
-				>
-					All Recipe
-				</Link>
-				<Link
-					to="/addrecipe"
-					className="text-lime-400 py-2 px-5 hover:text-lime-600"
-				>
-					Add Recipe
-				</Link>
-				<Link
-					to="/myrecipe"
-					className="text-lime-400 py-2 px-3 hover:text-lime-600"
-				>
-					My Recipe
-				</Link>
-			</div>
+			{!user ? (
+				<>
+					<div className="flex justify-between space-x-4 font-semibold">
+						<Link
+							to="/"
+							className="text-lime-400 py-2 px-3 hover:text-lime-600"
+						>
+							Home
+						</Link>
+						<Link
+							to="/allrecipe"
+							className="text-lime-400 py-2 px-3 hover:text-lime-600"
+						>
+							All Recipe
+						</Link>
+						<Link
+							to="/aboutus"
+							className="text-lime-400 py-2 px-3 hover:text-lime-600"
+						>
+							About Us
+						</Link>
+						<Link
+							to="/contact"
+							className="text-lime-400 py-2 px-3 hover:text-lime-600"
+						>
+							Contact
+						</Link>
+						
+					</div>
+				</>
+			) : (
+				<>
+					<div className="hidden md:flex space-x-4 font-semibold">
+						<Link
+							to="/"
+							className="text-lime-400 py-2 px-3 hover:text-lime-600"
+						>
+							Home
+						</Link>
+						<Link
+							to="/allrecipe"
+							className="text-lime-400 py-2 px-3 hover:text-lime-600"
+						>
+							All Recipe
+						</Link>
+						<Link
+							to="/addrecipe"
+							className="text-lime-400 py-2 px-5 hover:text-lime-600"
+						>
+							Add Recipe
+						</Link>
+						<Link
+							to="/myrecipe"
+							className="text-lime-400 py-2 px-3 hover:text-lime-600"
+						>
+							My Recipe
+						</Link>
+						<Link
+							to="/aboutus"
+							className="text-lime-400 py-2 px-3 hover:text-lime-600"
+						>
+							About Us
+						</Link>
+						<Link
+							to="/contact"
+							className="text-lime-400 py-2 px-3 hover:text-lime-600"
+						>
+							Contact
+						</Link>
+					</div>
+				</>
+			)}
 
 			{/* Mobile menu button */}
 			<div className="md:hidden">
@@ -163,9 +212,7 @@ const Header = () => {
 				</div>
 			)}
 
-			<div className="">
-				
-			</div>
+			<div className=""></div>
 
 			<div className="space-x-4 flex items-center">
 				<label className="swap swap-rotate">

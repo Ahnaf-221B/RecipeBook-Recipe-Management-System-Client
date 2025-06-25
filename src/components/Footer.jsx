@@ -1,16 +1,62 @@
-import React from 'react'
+import React from "react";
 import { Link } from "react-router-dom";
 import { FaFacebook, FaTwitter, FaInstagram } from "react-icons/fa";
 import { MdPhone, MdMail, MdLocationOn } from "react-icons/md";
 const Footer = () => {
-  return (
+	return (
 		<footer className="mt-20 bg-gradient-to-r from-teal-400 to-lime-400 text-white">
 			<div className="  px-4 py-8 ">
-				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center items-center text-center">
+				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 justify-items-center items-center text-center">
 					{/* Website Name and Info */}
 					<div className="space-y-4">
-						<h2 className="text-xl font-bold">RecipeBook</h2>
+						<div className="flex items-center justify-center gap-2">
+							<img
+								src="https://i.postimg.cc/gc3L1KM1/image.png"
+								alt="logo"
+								className="hidden md:block w-12 h-12 rounded-full"
+							/>
+							<h2 className="text-xl font-bold">RecipeBook</h2>
+						</div>
+
 						<p className="text-white">Providing quality services since 2020</p>
+					</div>
+
+					<div className="">
+						<h2 className="font-bold text-xl">Links</h2>
+						
+						<div className="text-white grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-2 ">
+							<Link
+							to="/"
+							className=" py-2 px-2 "
+						>
+							Home
+						</Link>
+						<Link
+							to="/allrecipe"
+							className=" py-2 px-2 "
+						>
+							All Recipe
+						</Link>
+						<Link
+							to="/aboutus"
+							className="py-2 px-2 "
+						>
+							About Us
+						</Link>
+						<Link
+							to="/contact"
+							className="py-2 px-2 "
+						>
+							Contact
+						</Link>
+						<Link
+							to="/support"
+							className=" py-2 px-2"
+						>
+							Support
+						</Link>
+						</div>
+						
 					</div>
 
 					{/* Contact Information */}
@@ -73,6 +119,6 @@ const Footer = () => {
 			</div>
 		</footer>
 	);
-}
+};
 
-export default Footer
+export default Footer;

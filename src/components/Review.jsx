@@ -65,7 +65,7 @@ function RecipeReviews() {
 				{reviews.map((review) => (
 					<div
 						key={review.id}
-						className="rounded-lg border border-gray-200 bg-white p-6 shadow-sm dark:bg-gray-800 dark:border-gray-700 dark:text-white"
+						className="rounded-lg h-full border border-gray-200 bg-white p-6 shadow-sm dark:bg-amber-50 dark:border-gray-700 dark:text-white"
 					>
 						<div className="mb-4 flex items-center justify-between">
 							<div className="flex items-center">
@@ -75,17 +75,17 @@ function RecipeReviews() {
 									className="mr-4 h-12 w-12 rounded-full object-cover"
 								/>
 								<div>
-									<h3 className="font-medium text-gray-900 dark:text-white">
+									<h3 className="font-medium text-black dark:text-black ">
 										{review.user}
 									</h3>
-									<p className="text-sm text-gray-500 dark:text-gray-300">
+									<p className="text-sm text-black dark:text-black-300">
 										{review.date}
 									</p>
 								</div>
 							</div>
 						</div>
 
-						<p className="mb-4 text-gray-700 dark:text-gray-300">
+						<p className="mb-4 text-gray-700 dark:text-black">
 							{review.comment}
 						</p>
 

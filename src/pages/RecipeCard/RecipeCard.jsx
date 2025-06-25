@@ -6,7 +6,7 @@ const RecipeCard = ({recipe}) => {
 
   return (
 		<section>
-			<div className="max-w-sm bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
+			<div className="max-w-full bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
 				<img
 					src={image}
 					alt={recipe.title}
@@ -26,7 +26,7 @@ const RecipeCard = ({recipe}) => {
 
 					<Link
 						to={`/details/${_id}`}
-						className="inline-block text-center w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition"
+						className="inline-block text-center w-full bg-lime-500 text-black font-semibold py-2 rounded-md "
 					>
 						See Details
 					</Link>

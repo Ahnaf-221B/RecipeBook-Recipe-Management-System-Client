@@ -69,11 +69,11 @@ const MyRecipe = () => {
 
 	return (
 		<div className="relative">
-			<div className="grid grid-cols-1 md:grid md:grid-cols-3 gap-8 my-8">
+			<div className="grid grid-cols-1 md:grid md:grid-cols-3 gap-8 p-12 ">
 				{myRecipe.map((recipe) => (
 					<section
 						key={recipe._id}
-						className="bg-white rounded-lg shadow-md p-6 mb-8"
+						className="bg-amber-50 rounded-lg shadow-md p-6 mb-8 "
 					>
 						<img
 							src={recipe.image}
@@ -116,7 +116,7 @@ const MyRecipe = () => {
 						<div className="flex gap-4">
 							<button
 								onClick={() => openModal(recipe)}
-								className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition"
+								className="bg-amber-300 text-black px-4 py-2 rounded transition"
 							>
 								Update
 							</button>
