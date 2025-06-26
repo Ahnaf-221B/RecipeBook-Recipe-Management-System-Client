@@ -19,6 +19,10 @@ import { ToastContainer } from "react-toastify";
 import AboutUs from "./components/AboutUs.jsx";
 import Contact from "./components/Contact.jsx";
 import Support from "./components/Support.jsx";
+import Dashboard from "./pages/Dashboard/Dashboard.jsx";
+import DashBoardLayout from "./layout/DashBoardLayout.jsx";
+import DashAllRecipe from "./pages/DashBoardComp/DashAllRecipe.jsx";
+import DashMyRecipe from "./pages/DashBoardComp/DashMyRecipe.jsx";
 
 const router = createBrowserRouter([
 	{
@@ -51,6 +55,7 @@ const router = createBrowserRouter([
 				path:'/support',
 				element: <Support></Support>
 			},
+			
 			{
 				path: "/addrecipe",
 				element: (
@@ -94,6 +99,26 @@ const router = createBrowserRouter([
 				Component: UpdateRecipe,
 			},
 		],
+	},
+	{
+		path:'/dashboard',
+		element : <DashBoardLayout></DashBoardLayout>,
+		children: [
+			{
+				index:true,
+				element: <Dashboard></Dashboard>
+			},
+			{
+				path:'/dashboard/allrecipe',
+				element: <DashAllRecipe></DashAllRecipe>
+			},
+			
+				{
+					path:'/dashboard/myrecipe',
+					element: <DashMyRecipe></DashMyRecipe>,
+				}
+			
+		]
 	},
 ]);
 
