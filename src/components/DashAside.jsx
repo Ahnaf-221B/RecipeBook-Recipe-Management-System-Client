@@ -22,17 +22,17 @@ const DashAside = () => {
 						All Recipes
 					</NavLink>
 
-					<NavLink to="/dashboard/addrecipe" className="font-semibold text-lg">
+					<NavLink to="/dashboard/dashaddrecipe" className="font-semibold text-lg">
 						Add Recipe
 					</NavLink>
 
 					<NavLink to="/dashboard/myrecipe" className="font-semibold text-lg">
 						My Recipes
 					</NavLink>
-					<NavLink to="/dashboard/myrecipe" className="font-semibold text-lg">
+					<NavLink to="/dashboard/dashabout" className="font-semibold text-lg">
 						About Us
 					</NavLink>
-					<NavLink to="/dashboard/myrecipe" className="font-semibold text-lg">
+					<NavLink to="/dashboard/dashcontact" className="font-semibold text-lg">
 						Contact Us
 					</NavLink>
 				</nav>

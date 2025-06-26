@@ -23,6 +23,9 @@ import Dashboard from "./pages/Dashboard/Dashboard.jsx";
 import DashBoardLayout from "./layout/DashBoardLayout.jsx";
 import DashAllRecipe from "./pages/DashBoardComp/DashAllRecipe.jsx";
 import DashMyRecipe from "./pages/DashBoardComp/DashMyRecipe.jsx";
+import DashAbout from "./pages/DashBoardComp/DashAbout.jsx";
+import DashContact from "./pages/DashBoardComp/DashContact.jsx";
+import DashAddRecipe from "./pages/DashBoardComp/DashAddRecipe.jsx";
 
 const router = createBrowserRouter([
 	{
@@ -48,14 +51,14 @@ const router = createBrowserRouter([
 				element: <AboutUs></AboutUs>,
 			},
 			{
-				path:'/contact',
-				element : <Contact></Contact>
+				path: "/contact",
+				element: <Contact></Contact>,
 			},
 			{
-				path:'/support',
-				element: <Support></Support>
+				path: "/support",
+				element: <Support></Support>,
 			},
-			
+
 			{
 				path: "/addrecipe",
 				element: (
@@ -101,24 +104,35 @@ const router = createBrowserRouter([
 		],
 	},
 	{
-		path:'/dashboard',
-		element : <DashBoardLayout></DashBoardLayout>,
+		path: "/dashboard",
+		element: <DashBoardLayout></DashBoardLayout>,
 		children: [
 			{
-				index:true,
-				element: <Dashboard></Dashboard>
+				index: true,
+				element: <Dashboard></Dashboard>,
 			},
 			{
-				path:'/dashboard/allrecipe',
-				element: <DashAllRecipe></DashAllRecipe>
+				path: "/dashboard/allrecipe",
+				element: <DashAllRecipe></DashAllRecipe>,
 			},
-			
-				{
-					path:'/dashboard/myrecipe',
-					element: <DashMyRecipe></DashMyRecipe>,
-				}
-			
-		]
+
+			{
+				path: "/dashboard/myrecipe",
+				element: <DashMyRecipe></DashMyRecipe>,
+			},
+			{
+				path: "/dashboard/dashabout",
+				element: <DashAbout></DashAbout>,
+			},
+			{
+				path: "/dashboard/dashcontact",
+				element: <DashContact></DashContact>,
+			},
+			{
+				path: "/dashboard/dashaddrecipe",
+				element: <DashAddRecipe></DashAddRecipe>,
+			},
+		],
 	},
 ]);
 
