@@ -71,6 +71,9 @@ const Header = () => {
 							>
 								My Recipe
 							</Link>
+							<Link to="/dashboard" className="text-lime-400 hover:text-lime-600">
+						Dashboard
+					</Link>
 						</>
 					)}
 					<Link to="/aboutus" className="text-lime-400 hover:text-lime-600">
@@ -79,9 +82,7 @@ const Header = () => {
 					<Link to="/contact" className="text-lime-400 hover:text-lime-600">
 						Contact
 					</Link>
-					<Link to="/dashboard" className="text-lime-400 hover:text-lime-600">
-						Dashboard
-					</Link>
+					
 				</nav>
 
 				{/* Right side: Theme toggle + Auth */}
