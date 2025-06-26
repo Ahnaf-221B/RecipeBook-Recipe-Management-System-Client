@@ -7,6 +7,7 @@ import {
 	FaUserAlt,
 	FaInfoCircle,
 	FaEnvelope,
+	FaChartPie,
 } from "react-icons/fa";
 
 const DashAside = () => {
@@ -31,7 +32,14 @@ const DashAside = () => {
 					<FaHome className="text-xl" />
 					Home
 				</NavLink>
-
+				<NavLink
+					to="/dashboard"
+					end
+					className="flex items-center gap-2 font-semibold text-lg hover:text-lime-700 transition"
+				>
+					<FaChartPie className="text-xl"/>
+					Overview
+				</NavLink>
 				<NavLink
 					to="/dashboard/allrecipe"
 					className="flex items-center gap-2 font-semibold text-lg hover:text-lime-700 transition"

@@ -14,16 +14,18 @@ const AuthProvider = ({ children }) => {
   const provider = new GoogleAuthProvider();
 
   const [user, setUser] = useState(null);
-
+  const [loading, setLoading] = useState(true);
   const createUser = (email, pass) => {
     return createUserWithEmailAndPassword(auth, email, pass);
   };
 
-  const registerGoogle = () => {
+  const registerGoogle = () => {setLoading(true);
     return signInWithPopup(auth, provider);
+    
   };
 
   const signInUser = (email, pass) => {
+    setLoading(true);
     return signInWithEmailAndPassword(auth, email, pass);
   };
   const signOutUser = () => {
@@ -48,13 +50,15 @@ const AuthProvider = ({ children }) => {
   }, []);
 
   const userInfo = {
-    user,
-    createUser,
-    registerGoogle,
-    signInUser,
-    signOutUser,
-    updateUser,
-  };
+		user,
+		createUser,
+		registerGoogle,
+		signInUser,
+		signOutUser,
+		updateUser,
+		setLoading,
+		loading,
+	};
   return (
     <AuthContext.Provider value={userInfo}>{children}</AuthContext.Provider>
   );
