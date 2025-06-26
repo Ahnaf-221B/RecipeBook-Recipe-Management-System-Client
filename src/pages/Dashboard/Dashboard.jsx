@@ -42,29 +42,29 @@ const Dashboard = () => {
 						<h3 className="text-xl font-semibold">Total Items</h3>
 						<p className="text-3xl font-bold">{totalItems}</p>
 					</div>
-					<div className="bg-lime-200 p-6 rounded-xl shadow text-center">
+					<div className="bg-amber-200 p-6 rounded-xl shadow text-center">
 						<h3 className="text-xl font-semibold">My Items</h3>
 						<p className="text-3xl font-bold">{myItems}</p>
 					</div>
 					<div className="bg-lime-200 p-6 rounded-xl shadow text-center">
-						<h3 className="text-xl font-semibold">Added Items</h3>
+						<h3 className="text-xl font-semibold">Added Items By User</h3>
 						<p className="text-3xl font-bold">{uniqueUsers}</p>
 					</div>
 				</div>
-				<div className="bg-yellow-100 p-6 rounded-xl w-full flex flex-col justify-items-start shadow  mt-10">
+				<div className="bg-amber-200 p-6 rounded-xl w-full flex flex-col justify-items-start shadow  mt-10">
 					<h3 className="text-xl font-bold">User Info</h3>
 
 					<div className="flex items-center gap-4 mt-4">
 						<img
-							className="w-10 h-10 rounded-full"
+							className="w-12 h-12 rounded-full"
 							src={user?.photoURL}
 							alt=""
 						/>
 						<div>
-							<p className="text-md font-semibold mt-2">
+							<p className="text-xl font-bold mt-2">
 								{user?.displayName}
 							</p>
-							<p className="text-md font-semibold">{user?.email}</p>
+							<p className="text-lg font-semibold">{user?.email}</p>
 						</div>
 					</div>
 				</div>

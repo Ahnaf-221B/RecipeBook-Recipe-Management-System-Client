@@ -41,7 +41,7 @@ const recipeData = [
 
 const Banner = () => {
 	return (
-		<div className="relative mt-20 p-10 w-full  overflow-hidden rounded-lg bg-amber-50">
+		<div className="relative mt-20 p-10 w-full  overflow-hidden rounded-lg bg-white">
 			<Swiper
 				modules={[Navigation, Pagination, Autoplay]}
 				spaceBetween={0}

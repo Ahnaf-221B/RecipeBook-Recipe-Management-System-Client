@@ -4,6 +4,7 @@ import { Link, useLoaderData } from "react-router-dom";
 import RecipeCard from "../RecipeCard/RecipeCard";
 import FeaturedCategories from "../../components/Featured";
 import RecipeReviews from "../../components/Review";
+import SpecialOffer from "../../components/SpecialOffer";
 
 const Home = () => {
 	const [topRecipes, setTopRecipes] = useState([]);
@@ -27,7 +28,7 @@ const Home = () => {
 	return (
 		<div>
 			<Banner />
-			<div className="bg-amber-50 rounded-lg  mt-10">
+			<div className=" rounded-lg  mt-10">
 				<div className="mt-14 pt-10 text-lime-400  flex justify-center items-center font-bold text-3xl ">
 					Top Recipes
 				</div>
@@ -46,7 +47,7 @@ const Home = () => {
 					</Link>
 				</div>
 			</div>
-
+					<SpecialOffer></SpecialOffer>
 			<FeaturedCategories></FeaturedCategories>
 			<RecipeReviews></RecipeReviews>
 		</div>

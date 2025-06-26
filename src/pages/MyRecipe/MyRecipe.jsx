@@ -1,12 +1,12 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import Swal from "sweetalert2";
-import UpdateRecipe from "../UpdateRecipe/UpdateRecipe"; // Adjust path if needed
-
+import UpdateRecipe from "../UpdateRecipe/UpdateRecipe"; 
+import Loader from "../loader/loader";
 const MyRecipe = () => {
 	const { user } = useContext(AuthContext);
 	const [myRecipe, setMyRecipe] = useState([]);
-
+const [loading, setLoading] = useState(true);
 	// Modal state
 	const [modalOpen, setModalOpen] = useState(false);
 	const [selectedRecipe, setSelectedRecipe] = useState(null);
@@ -18,6 +18,7 @@ const MyRecipe = () => {
 			)
 				.then((res) => res.json())
 				.then((data) => setMyRecipe(data));
+				setLoading(false)
 		}
 	}, [user?.email]);
 
@@ -69,6 +70,11 @@ const MyRecipe = () => {
 
 	return (
 		<div className="relative">
+				{loading ? (
+			<div className="flex justify-center items-center min-h-[60vh]">
+				<Loader />
+			</div>
+		) : (
 			<div className="grid grid-cols-1 md:grid md:grid-cols-3 gap-8 p-12 ">
 				{myRecipe.map((recipe) => (
 					<section
@@ -131,6 +137,7 @@ const MyRecipe = () => {
 				))}
 			</div>
 
+			)}
 			{/* Modal */}
 			{modalOpen && selectedRecipe && (
 				<div

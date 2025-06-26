@@ -65,7 +65,7 @@ function RecipeReviews() {
 				{reviews.map((review) => (
 					<div
 						key={review.id}
-						className="rounded-lg h-full border border-gray-200 bg-white p-6 shadow-sm dark:bg-amber-50 dark:border-gray-700 dark:text-white"
+						className="rounded-lg h-full border border-gray-200 bg-white p-6 shadow-sm dark:bg-white dark:border-gray-700 dark:text-white"
 					>
 						<div className="mb-4 flex items-center justify-between">
 							<div className="flex items-center">

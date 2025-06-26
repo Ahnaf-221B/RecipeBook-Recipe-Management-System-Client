@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import RecipeCard from "../RecipeCard/RecipeCard";
+import { FaFilter, FaSortAlphaDown } from "react-icons/fa";
 
 const AllRecipe = () => {
 	const data = useLoaderData() || [];
@@ -31,11 +32,14 @@ const AllRecipe = () => {
 			</h1>
 
 			{/* Filter & Sort Options */}
-			<div className="flex flex-col md:flex-row justify-between items-center gap-4 m-6">
-				<div>
-					<label className="mr-2 font-semibold text-lg">Filter by Category:</label>
+			<div className="flex flex-col md:flex-row justify-between items-center gap-4 mb-6">
+				{/* Filter Section */}
+				<div className="flex items-center gap-2">
+				
+						<FaFilter size={20} className="text-lime-600 md:ml-10" />
+					
 					<select
-						className="p-1 border-2 rounded-xl"
+						className="p-2 border-2 rounded-xl bg-white font-semibold"
 						value={categoryFilter}
 						onChange={(e) => setCategoryFilter(e.target.value)}
 					>
@@ -48,10 +52,13 @@ const AllRecipe = () => {
 					</select>
 				</div>
 
-				<div>
-					<label className="mr-2 font-semibold text-lg">Sort by Name:</label>
+				{/* Sort Section */}
+				<div className="flex items-center gap-2">
+					
+						<FaSortAlphaDown size={25} className="text-lime-600 " />
+						
 					<select
-						className="p-1 border-2 rounded-xl"
+						className="p-2 border-2 rounded-xl bg-white font-semibold md:mr-6"
 						value={sortOrder}
 						onChange={(e) => setSortOrder(e.target.value)}
 					>

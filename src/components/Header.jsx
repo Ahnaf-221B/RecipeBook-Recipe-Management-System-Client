@@ -47,8 +47,23 @@ const Header = () => {
 		}
 	};
 
+	const [scrolled, setScrolled] = useState(false);
+
+	useEffect(() => {
+		const handleScroll = () => {
+			setScrolled(window.scrollY > 20);
+		};
+
+		window.addEventListener("scroll", handleScroll);
+		return () => window.removeEventListener("scroll", handleScroll);
+	}, []);
+
 	return (
-		<header className=" shadow-md py-4 px-4 md:px-12 flex justify-between items-center relative sticky top-0 z-50 bg-amber-50 ">
+		<header
+			className={`py-4 px-4 md:px-12 flex justify-between items-center sticky top-0 z-50 transition-colors duration-300 ${
+				scrolled ? "bg-white shadow-md" : "bg-transparent shadow-lg"
+			}`}
+		>
 			<div className="flex items-center space-x-2 flex-shrink-0">
 				<img
 					src="https://i.postimg.cc/gc3L1KM1/image.png"

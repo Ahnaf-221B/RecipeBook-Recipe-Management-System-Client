@@ -26,6 +26,7 @@ import DashMyRecipe from "./pages/DashBoardComp/DashMyRecipe.jsx";
 import DashAbout from "./pages/DashBoardComp/DashAbout.jsx";
 import DashContact from "./pages/DashBoardComp/DashContact.jsx";
 import DashAddRecipe from "./pages/DashBoardComp/DashAddRecipe.jsx";
+import DashDetails from "./pages/DashBoardComp/DashDetails.jsx";
 
 const router = createBrowserRouter([
 	{
@@ -114,6 +115,8 @@ const router = createBrowserRouter([
 			{
 				path: "/dashboard/allrecipe",
 				element: <DashAllRecipe></DashAllRecipe>,
+				loader: () =>
+					fetch("https://my-recipe-store-server.vercel.app/recipes"),
 			},
 
 			{
@@ -131,6 +134,14 @@ const router = createBrowserRouter([
 			{
 				path: "/dashboard/dashaddrecipe",
 				element: <DashAddRecipe></DashAddRecipe>,
+			},
+			{
+				path: "/dashboard/dashdetails/:id",
+				element: <DashDetails></DashDetails>,
+				loader: ({ params }) =>
+					fetch(
+						`https://my-recipe-store-server.vercel.app/recipes/${params.id}`
+					)
 			},
 		],
 	},
